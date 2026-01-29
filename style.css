@@ -1,0 +1,49 @@
+
+
+body{margin:0;font-family:Poppins,Arial;background:#0b0b0f;color:#fff;display:flex}
+.sidebar{width:260px;background:#111;padding:25px;text-align:center}
+.avatar{width:110px;border-radius:50%;border:3px solid #f5c26b}
+.role{color:#aaa;font-size:14px}
+nav a{display:block;margin:18px 0;color:#aaa;text-decoration:none}
+nav a.active{color:#f5c26b}
+.content{flex:1;padding:40px}
+.card{margin-bottom:30px;padding:30px;border-radius:16px}
+.glass{background:rgba(255,255,255,0.06);backdrop-filter:blur(12px)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px}
+.service{padding:20px;background:#181818;border-radius:12px;text-align:center}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.project{padding:40px;text-align:center}
+.skill{margin:15px 0}
+.bar{height:8px;background:#333;border-radius:5px;overflow:hidden}
+.bar div{height:100%;background:#f5c26b}
+input,textarea,button{width:100%;margin:10px 0;padding:12px;border-radius:8px;border:none}
+button{background:#f5c26b;font-weight:bold}
+@media(max-width:768px){body{flex-direction:column}.sidebar{width:100%}}
+.project img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.project h3 {
+  margin: 10px 0 5px;
+}
+
+.project p {
+  font-size: 14px;
+  color: #ccc;
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #f5c26b;
+  text-decoration: none;
+  font-weight: bold;
+}
+html {
+  scroll-behavior: smooth;
+}
+
