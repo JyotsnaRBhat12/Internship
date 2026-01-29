@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Contact</title>
-<link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-<aside class="sidebar">
-<img src="images/profile.jpg" class="avatar" />
-<h2>Jyotsna</h2>
-<p class="role">AI & Full‑Stack Developer</p>
-<nav>
-<a href="index.html">About</a>
-<a href="projects.html">Portfolio</a>
-<a class="active" href="contact.html">Contact</a>
-</nav>
-</aside>
 
-<main class="content">
-<section class="card glass">
-<h1>Contact</h1>
-<form onsubmit="return validate()">
-<input placeholder="Name" id="name" />
-<input placeholder="Email" id="email" />
-<textarea placeholder="Message" id="msg"></textarea>
-<button>Send</button>
-</form>
-</section>
+<body>
+
+<header>
+    <nav class="navbar">
+        <h2 class="logo">MyPortfolio</h2>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="contact">
+        <h1>Contact Me</h1>
+
+        <form id="contactForm">
+            <input type="text" id="name" placeholder="Your Name">
+            <input type="email" id="email" placeholder="Your Email">
+            <textarea id="message" placeholder="Your Message"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+
+        <p id="status"></p>
+    </section>
 </main>
+
+
 <script src="script.js"></script>
 </body>
 </html>

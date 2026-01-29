@@ -1,52 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Portfolio | Projects</title>
-<link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<aside class="sidebar">
-<img src="images/profile.jpg" class="avatar" />
-<h2>Jyotsna</h2>
-<p class="role">AI & Full‑Stack Developer</p>
-<nav>
-<a href="index.html">About</a>
-<a class="active" href="projects.html">Portfolio</a>
-<a href="contact.html">Contact</a>
-</nav>
-</aside>
 
-<main class="content">
-<section class="card glass">
-<h1>Projects</h1>
-<div class="projects">
+<header>
+    <nav class="navbar">
+        <h2 class="logo">MyPortfolio</h2>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
-  <div class="project glass">
-    <img src="images/project1.jpg" alt="AI Career Path Recommender">
-    <h3>AI Career Path Recommender</h3>
-    <p>Suggests career paths based on skills using AI.</p>
-    <a href="#" class="project-link">View Project</a>
-  </div>
+<main>
+    <section class="projects">
+        <h1>My Projects</h1>
 
-  <div class="project glass">
-    <img src="images/project2.jpg" alt="Heart Disease Prediction">
-    <h3>Heart Disease Prediction</h3>
-    <p>Machine learning model to predict heart disease.</p>
-    <a href="#" class="project-link">View Project</a>
-  </div>
+        <div class="project-grid">
 
-  <div class="project glass">
-    <img src="images/project3.jpg" alt="Temple Booking System">
-    <h3>Temple Booking System</h3>
-    <p>Web application for booking temple offerings.</p>
-    <a href="#" class="project-link">View Project</a>
-  </div>
+            <article class="project-card">
+                <img src="images/project1.jpg" alt="Project 1">
+                <h3>Student Management System</h3>
+                <p>Database-based system to manage student records.</p>
+                <a href="#">Learn More</a>
+            </article>
 
-</div>
+            <article class="project-card">
+                <img src="images/project2.jpg" alt="Project 2">
+                <h3>AI Career Recommender</h3>
+                <p>AI-based career suggestion platform.</p>
+                <a href="#">View</a>
+            </article>
 
-</section>
+            <article class="project-card">
+                <img src="images/project3.jpg" alt="Project 3">
+                <h3>Heart Disease Prediction</h3>
+                <p>ML model for medical prediction.</p>
+                <a href="#">View</a>
+            </article>
+
+        </div>
+    </section>
 </main>
+
 </body>
 </html>

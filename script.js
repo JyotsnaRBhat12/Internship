@@ -1,24 +1,36 @@
-function validate() {
-  const nameField = document.getElementById("name");
-  const emailField = document.getElementById("email");
-  const msgField = document.getElementById("msg");
+// Variables
+const form = document.getElementById("contactForm");
+const statusText = document.getElementById("status");
 
-  if (
-    nameField.value.trim() === "" ||
-    emailField.value.trim() === "" ||
-    msgField.value.trim() === ""
-  ) {
-    alert("Fill all fields");
-    return false;
-  }
+// Function
+function validateForm(name, email, message) {
+    if (name === "" || email === "" || message === "") {
+        statusText.textContent = "All fields are required!";
+        statusText.style.color = "red";
+        return false;
+    }
 
-  // Email format validation
-  const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-  if (!emailPattern.test(emailField.value)) {
-    alert("Enter a valid email");
-    return false;
-  }
+    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!email.match(emailPattern)) {
+        statusText.textContent = "Invalid email format!";
+        statusText.style.color = "red";
+        return false;
+    }
 
-  alert("Message sent successfully (dummy submit)");
-  return false; // prevents page reload
+    return true;
 }
+
+// DOM Manipulation
+form?.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let message = document.getElementById("message").value;
+
+    if (validateForm(name, email, message)) {
+        statusText.textContent = "Message sent successfully (Dummy)";
+        statusText.style.color = "green";
+        form.reset();
+    }
+});
