@@ -20,7 +20,6 @@ function validateForm(name, email, message) {
     return true;
 }
 
-// DOM Manipulation
 form?.addEventListener("submit", function (e) {
     e.preventDefault();
 
