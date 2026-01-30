@@ -1,35 +1,37 @@
-// Variables
-const form = document.getElementById("contactForm");
-const statusText = document.getElementById("status");
+document.addEventListener("DOMContentLoaded", () => {
 
-// Function
-function validateForm(name, email, message) {
-    if (name === "" || email === "" || message === "") {
-        statusText.textContent = "All fields are required!";
-        statusText.style.color = "red";
-        return false;
-    }
+    const form = document.getElementById("contactForm");
+    const emailInput = document.getElementById("email");
+    const messageBox = document.getElementById("formMessage");
 
-    let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-    if (!email.match(emailPattern)) {
-        statusText.textContent = "Invalid email format!";
-        statusText.style.color = "red";
-        return false;
-    }
+    if (!form) return; 
 
-    return true;
-}
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,}$/i;
 
-form?.addEventListener("submit", function (e) {
-    e.preventDefault();
+    emailInput.addEventListener("input", () => {
+        if (!emailInput.value.match(emailPattern)) {
+            emailInput.style.borderColor = "red";
+        } else {
+            emailInput.style.borderColor = "#00e5ff";
+        }
+    });
 
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
-    let message = document.getElementById("message").value;
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
 
-    if (validateForm(name, email, message)) {
-        statusText.textContent = "Message sent successfully (Dummy)";
-        statusText.style.color = "green";
+        if (!emailInput.value.match(emailPattern)) {
+            messageBox.style.color = "red";
+            messageBox.innerText = "Please enter a valid email address!";
+            return;
+        }
+
+        messageBox.style.color = "#00e5ff";
+        messageBox.innerText = "Message sent successfully ";
+
         form.reset();
-    }
+    });
+
 });
+
+
+

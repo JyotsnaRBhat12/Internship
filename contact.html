@@ -1,64 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Contact</title>
-	<link rel="stylesheet" href="style.css">
-</head>
+    <meta charset="UTF-8">
+    <title>Contact</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
-	<header>
-		<nav class="navbar">
-			<h2 class="logo">Jyotsna R Bhat</h2>
-			<ul class="nav-links">
-				<li><a href="index.html">Home</a></li>
-				<li><a href="projects.html">Projects</a></li>
-				<li><a href="contact.html" class="active">Contact</a></li>
-			</ul>
-		</nav>
-	</header>
+<section class="contact-page">
 
-	<main>
-		<section class="contact-section">
-			<h1>Get In Touch</h1>
+    <div class="contact-wrapper">
 
-			<div class="contact-box">
-				<p class="contact-text">
-					Let's connect and explore opportunities to collaborate, innovate,
-					and create impact together.
-				</p>
+        <div class="contact-info">
+            <h2>Get In Touch</h2>
+            <p>
+                Let’s connect and explore opportunities to collaborate,
+                innovate, and create impact together.
+            </p>
 
-				<div class="contact-cards">
+            <div class="info-box">
+                <strong>Email</strong>
+                <p>jyotsnarbhat05@gmail.com</p>
+            </div>
 
-					<div class="contact-card">
-						<div class="icon">✉️</div>
-						<h3>Email</h3>
-						<p>jyotsnarbhat05@gmail.com</p>
-					</div>
+            <div class="info-box">
+                <strong>Location</strong>
+                <p>Kochi, Kerala, India</p>
+            </div>
 
-					<div class="contact-card">
-						<div class="icon">🔗</div>
-						<h3>LinkedIn</h3>
-						<p>/linkedin.url</p>
-					</div>
+            <a href="https://www.linkedin.com/in/jyotsna-r-bhat/"
+               target="_blank"
+               class="linkedin-link">
+                <i class="fab fa-linkedin"></i>
+                <span>LinkedIn Profile</span>
+            </a>
+        </div>
 
-					<div class="contact-card">
-						<div class="icon">📍</div>
-						<h3>Location</h3>
-						<p>Kochi, Kerala, India</p>
-					</div>
+        <div class="contact-form">
+            <form id="contactForm">
+                <h3>Contact Form</h3>
 
-				</div>
-			</div>
-		</section>
+                <input type="text"
+                       id="name"
+                       placeholder="Your Name"
+                       required>
 
-	</main>
+                <input type="email"
+                       id="email"
+                       placeholder="Your Email"
+                       required>
 
+                <textarea id="message"
+                          rows="5"
+                          placeholder="Your Message"
+                          required></textarea>
 
-	<script src="script.js"></script>
+                <button type="submit">Send Message</button>
+
+                <p id="formMessage"></p>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<script src="script.js"></script>
+
 </body>
-
 </html>
