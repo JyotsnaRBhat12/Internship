@@ -154,7 +154,7 @@
 	}
 
 	.project-card a {
-		color: #def6f9;
+		color: #060606;
 		text-decoration: none;
 		font-weight: 500;
 	}
@@ -355,4 +355,20 @@
     .contact-wrapper {
         flex-direction: column;
     }
+}
+footer {
+    background: #000;
+    color: #aaa;
+    padding: 15px 0;
+    margin-top: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
 }
