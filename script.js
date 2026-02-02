@@ -1,4 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
+    
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.pageYOffset >= sectionTop - 150) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href").includes(current)) {
+                link.classList.add("active");
+            }
+        });
+    });
 
     const form = document.getElementById("contactForm");
     const emailInput = document.getElementById("email");
@@ -12,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!emailInput.value.match(emailPattern)) {
             emailInput.style.borderColor = "red";
         } else {
-            emailInput.style.borderColor = "#00e5ff";
+            emailInput.style.borderColor = "#00e5ff"; 
         }
     });
 
@@ -25,13 +47,30 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        // Success State
         messageBox.style.color = "#00e5ff";
-        messageBox.innerText = "Message sent successfully ";
+        messageBox.innerText = "Message sent successfully! ";
 
         form.reset();
+        
+        emailInput.style.borderColor = ""; 
     });
 
 });
 
 
+const revealOnScroll = () => {
+    const elements = document.querySelectorAll('.home-content, .project-card, .contact-wrapper');
+    
+    elements.forEach((el) => {
+        const elementTop = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+            el.classList.add('appear');
+        }
+    });
+};
 
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
