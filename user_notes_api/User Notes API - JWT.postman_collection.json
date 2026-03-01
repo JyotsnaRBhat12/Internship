@@ -1,0 +1,114 @@
+{
+  "info": {
+    "_postman_id": "ab7a4273-6275-4228-b20d-df49d6761595",
+    "name": "User Notes API - JWT",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://127.0.0.1:5000" },
+    { "key": "access_token", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"demo_user\",\n  \"password\": \"demo_pass\"\n}"
+        },
+        "url": "{{base_url}}/register"
+      }
+    },
+    {
+      "name": "Login",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "const res = pm.response.json();",
+              "if (res.access_token) { pm.collectionVariables.set('access_token', res.access_token); }"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"demo_user\",\n  \"password\": \"demo_pass\"\n}"
+        },
+        "url": "{{base_url}}/login"
+      }
+    },
+    {
+      "name": "Create Note",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{access_token}}", "type": "string" }]
+        },
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"content\": \"My first secure note\"\n}"
+        },
+        "url": "{{base_url}}/notes"
+      }
+    },
+    {
+      "name": "Get Notes",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{access_token}}", "type": "string" }]
+        },
+        "method": "GET",
+        "url": "{{base_url}}/notes"
+      }
+    },
+    {
+      "name": "Update Note",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{access_token}}", "type": "string" }]
+        },
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"content\": \"Updated note\"\n}"
+        },
+        "url": "{{base_url}}/notes/1"
+      }
+    },
+    {
+      "name": "Delete Note",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{access_token}}", "type": "string" }]
+        },
+        "method": "DELETE",
+        "url": "{{base_url}}/notes/1"
+      }
+    },
+    {
+      "name": "Logout",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [{ "key": "token", "value": "{{access_token}}", "type": "string" }]
+        },
+        "method": "POST",
+        "url": "{{base_url}}/logout"
+      }
+    }
+  ]
+}
