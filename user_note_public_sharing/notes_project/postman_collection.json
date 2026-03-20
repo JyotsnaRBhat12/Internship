@@ -1,0 +1,165 @@
+{
+  "info": {
+    "name": "Notes Public Sharing API",
+    "_postman_id": "b3f2c7a2-5f9e-4e93-9a77-0e0f3b7f2b1a",
+    "description": "Postman collection for notes sharing endpoints.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000"
+    },
+    {
+      "key": "note_id",
+      "value": ""
+    },
+    {
+      "key": "share_token",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Create Note",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/create-note/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "create-note",
+            ""
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user\": 1,\n  \"title\": \"My First Note\",\n  \"content\": \"Hello this is my note\"\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Response has data\", function () {",
+              "    var json = pm.response.json();",
+              "    pm.expect(json).to.have.property(\"data\");",
+              "});",
+              "",
+              "var json = pm.response.json();",
+              "if (json.data && json.data.id) {",
+              "    pm.collectionVariables.set(\"note_id\", json.data.id);",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Generate Share Link",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{base_url}}/api/share-note/{{note_id}}/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "share-note",
+            "{{note_id}}",
+            ""
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"expiry_date\": \"2026-04-01T10:00:00\"\n}"
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Share link returned\", function () {",
+              "    var json = pm.response.json();",
+              "    pm.expect(json).to.have.property(\"share_link\");",
+              "});",
+              "",
+              "var json = pm.response.json();",
+              "if (json.share_link) {",
+              "    var parts = json.share_link.split(\"/\");",
+              "    var token = parts[parts.length - 2];",
+              "    pm.collectionVariables.set(\"share_token\", token);",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Access Shared Note",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base_url}}/api/share/{{share_token}}/",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "share",
+            "{{share_token}}",
+            ""
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Shared note fields present\", function () {",
+              "    var json = pm.response.json();",
+              "    pm.expect(json).to.have.property(\"title\");",
+              "    pm.expect(json).to.have.property(\"content\");",
+              "    pm.expect(json).to.have.property(\"access_count\");",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ]
+    }
+  ]
+}
