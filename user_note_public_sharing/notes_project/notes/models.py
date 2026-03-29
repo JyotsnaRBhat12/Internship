@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 import uuid
+from django.contrib.auth.models import User
+from django.utils import timezone
 
 
 class Note(models.Model):
@@ -28,3 +30,24 @@ class SharedLink(models.Model):
     access_count = models.IntegerField(default=0)
 
     created_at = models.DateTimeField(auto_now_add=True)
+
+
+
+class UserOTP(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    otp = models.CharField(max_length=6)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    is_verified = models.BooleanField(default=False)
+
+
+class LoginAttempt(models.Model):
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    attempt_count = models.IntegerField(default=0)
+
+    is_locked = models.BooleanField(default=False)
